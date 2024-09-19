@@ -1,0 +1,36 @@
+---
+title: "Data Import"
+author: "Mingyin Wang"
+date: 2024-09-18
+output: github_document
+---
+
+This document contains the code for Homework 1 in P8105
+
+##Problem 1
+
+```{r}
+library(tidyverse)
+```
+
+load the penguins dataset
+
+```{r}
+data("penguins", package = "palmerpenguins")
+penguins
+```
+
+
+Code to get the numbers of rows, columns and mean of flipper_length_mm column
+```{r}
+dataset_rows <- nrow(penguins)
+dataset_cols <- ncol(penguins)
+mean_flipper_length = mean(penguins$flipper_length_mm, na.rm = TRUE)
+```
+
+The penguins dataset contains `344` rows and `8` columns. The mean flipper length is 200.9152 mm. The important variables are 
+
+
+
+
+
