@@ -13,25 +13,25 @@ This document contains the code for Homework 1 in P8105
 library(tidyverse)
 ```
 
-load the penguins dataset
 
 ```{r}
+#load the penguins dataset
 data("penguins", package = "palmerpenguins")
 penguins
 ```
 
 
-Code to get the numbers of rows, columns and mean of flipper_length_mm column
 ```{r}
+# Code to get the numbers of rows, columns and mean of flipper_length_mm column
 dataset_rows <- nrow(penguins)
 dataset_cols <- ncol(penguins)
 mean_flipper_length = mean(penguins$flipper_length_mm, na.rm = TRUE)
 ```
 
 
-#Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x) and save it
 
 ```{r yx_scatter}
+#Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x) and save it
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm)) + 
   geom_point() +
   labs(
@@ -40,8 +40,14 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm)) +
     y= "Flipper Length in mm", 
     color = "Species"
   )
+ggsave("penguins_scatterplot.pdf", height = 4, width = 6)
+```
+
+## Question 2
+```{r}
 
 ```
+
 
 
 
