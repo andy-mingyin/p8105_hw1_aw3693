@@ -64,16 +64,17 @@ mean_factor_vector = mean(df %>% pull(factor_vector) )
 ```
 The random_sample and logical_vector work, since random_sample is numeric and logical_vector contains true and false, which are 1 and 0 respectively. 
 
-```{r, results = hide}
+```{r, result = 'hide'}
 #convert variable to numeric
 numeric_logical_vector = as.numeric(df %>% pull(logical_vector))
 numeric_character_vector = as.numeric(df %>% pull(character_vector))
 numeric_factor_vector = as.numeric(df %>% pull(factor_vector))
 ```
 For the Logical vector, true becomes 1 and false becomes 0, then we could calculate the mean
-For the character vector, the conversion does not work and returns NA values, since characters cannot be directly converted to numeric.
-For the factor vector,the conversion to numeric works, but the numeric values correspond to the underlying factor levels, not the actual factor names.
 
+For the character vector, the conversion does not work and returns NA values, since characters cannot be directly converted to numeric.
+
+For the factor vector,the conversion to numeric works, but the numeric values correspond to the factor levels, level 1, level 2, level 3. Then, we could take the average of factor vector, but it is not meaningful. 
 
 
 
