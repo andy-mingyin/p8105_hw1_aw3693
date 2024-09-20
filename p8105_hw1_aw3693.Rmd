@@ -9,7 +9,7 @@ This document contains the code for Homework 1 in P8105
 
 ##Problem 1
 
-```{r}
+```{r setup, echo = FALSE, message = FALSE}
 library(tidyverse)
 ```
 
@@ -32,21 +32,49 @@ mean_flipper_length = mean(penguins$flipper_length_mm, na.rm = TRUE)
 
 ```{r yx_scatter}
 #Make a scatterplot of flipper_length_mm (y) vs bill_length_mm (x) and save it
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm)) + 
-  geom_point() +
-  labs(
-    title = "Scatterplot of Flipper Length vs Bill Length",
-    x = "Bill Length in mm",
-    y= "Flipper Length in mm", 
-    color = "Species"
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = "species")) + 
+  geom_point() + labs(
+    x = " Bill length in mm", 
+    y = "Flipper length in mm", 
+    title = "Scatterplot of Flipper Length vs Bill Length"
   )
 ggsave("penguins_scatterplot.pdf", height = 4, width = 6)
 ```
 
+
 ## Question 2
 ```{r}
+# make a data frame
+set.seed(1)  
+df <- data.frame(
+  random_sample = rnorm(10), 
+  logical_vector = rnorm(10) > 0,
+  character_vector = sample(letters, 10),
+  factor_vector = factor(sample(c("Level1", "Level2", "Level3"), 10,  replace = TRUE))  
+)
 
 ```
+
+```{r}
+# take the mean of each variable
+mean_random_sample = mean(df %>% pull(random_sample) )
+mean_logical_vector = mean(df %>% pull(logical_vector) )
+mean_character_vector = mean(df %>% pull(character_vector) )
+mean_factor_vector = mean(df %>% pull(factor_vector) )
+```
+The random_sample and logical_vector work, since random_sample is numeric and logical_vector contains true and false, which are 1 and 0 respectively. 
+
+```{r, results = hide}
+#convert variable to numeric
+numeric_logical_vector = as.numeric(df %>% pull(logical_vector))
+numeric_character_vector = as.numeric(df %>% pull(character_vector))
+numeric_factor_vector = as.numeric(df %>% pull(factor_vector))
+```
+For the Logical vector, true becomes 1 and false becomes 0, then we could calculate the mean
+For the character vector, the conversion does not work and returns NA values, since characters cannot be directly converted to numeric.
+For the factor vector,the conversion to numeric works, but the numeric values correspond to the underlying factor levels, not the actual factor names.
+
+
 
 
 
