@@ -59,18 +59,18 @@ df <- data.frame(
 
 ```{r}
 # take the mean of each variable
-mean_random_sample = mean(df |> pull(random_sample) )
-mean_logical_vector = mean(df |> pull(logical_vector) )
-mean_character_vector = mean(df |> pull(character_vector) )
-mean_factor_vector = mean(df |> pull(factor_vector) )
+mean_random_sample = mean(pull(df, random_sample) )
+mean_logical_vector = mean(pull(df, logical_vector) )
+mean_character_vector = mean(pull(df, character_vector) )
+mean_factor_vector = mean(pull(df, factor_vector) )
 ```
 The random_sample and logical vector work, since random_sample is numeric and logical vector contains true and false, which are 1 and 0 respectively. The character vectors and factor vectors do not work, since we cannot take the average of characters, and factors are categorical.
 
 ```{r, result = 'hide'}
 #convert variable to numeric
-numeric_logical_vector = as.numeric(df |> pull(logical_vector))
-numeric_character_vector = as.numeric(df |> pull(character_vector))
-numeric_factor_vector = as.numeric(df |> pull(factor_vector))
+numeric_logical_vector = as.numeric(pull(df, logical_vector))
+numeric_character_vector = as.numeric(pull(df, character_vector))
+numeric_factor_vector = as.numeric(pull(df, factor_vector))
 ```
 For the Logical vector, true becomes 1 and false becomes 0, then we could calculate the mean
 
